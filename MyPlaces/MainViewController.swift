@@ -16,6 +16,7 @@ final class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.rowHeight = 120
         
         setupNavBar()
     }
@@ -40,6 +41,7 @@ final class MainViewController: UITableViewController {
         let restaurant = restaurants[indexPath.row]
         
         content.text = restaurant.name
+        content.image = UIImage(named: restaurant.name)
         
         cell.contentConfiguration = content
 
