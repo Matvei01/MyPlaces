@@ -16,15 +16,17 @@ final class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
-        tableView.rowHeight = 120
+        tableView.rowHeight = 100
         
         setupNavBar()
     }
     
     private func setupNavBar() {
-        title = "Restaurants"
+        title = "My Places"
         
-        navigationController?.navigationBar.prefersLargeTitles = true
+        let customFont = UIFont(name: "Snell Roundhand", size: 30)
+        
+        navigationController?.navigationBar.titleTextAttributes = [.font: customFont ?? .boldSystemFont(ofSize: 40)]
     }
 
     // MARK: - Table view data source
@@ -42,6 +44,7 @@ final class MainViewController: UITableViewController {
         
         content.text = restaurant.name
         content.image = UIImage(named: restaurant.name)
+        content.imageProperties.cornerRadius = tableView.rowHeight / 2
         
         cell.contentConfiguration = content
 
